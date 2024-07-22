@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page B</title>
+</head>
+<body>
+    <h1>Page B</h1>
+    <p id="displayName"></p>
+    <p id="displayEmail"></p>
+    <p id="displayMessage"></p>
+
+    <script>
+        // Récupérer les informations depuis le localStorage
+        const name = localStorage.getItem('name');
+        const email = localStorage.getItem('email');
+        const message = localStorage.getItem('message');
+
+        // Afficher les informations
+        document.getElementById('displayName').innerText = 'Nom: ' + name;
+        document.getElementById('displayEmail').innerText = 'Email: ' + email;
+        document.getElementById('displayMessage').innerText = 'Message: ' + message;
+    </script>
+</body>
+</html>

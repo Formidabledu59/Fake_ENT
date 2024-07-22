@@ -1,0 +1,45 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+h1 {
+    color: red;
+    text-align: center;
+}
+.center-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    border: 2px solid black;
+    text-align: center;
+}
+.legend {
+    margin-top: 10px;
+    font-size: 14px;
+    color: grey;
+    text-align: center;
+}
+
+.fait_confiance_a_la_technologie{
+    background-image: url(./Connexion\ élève\ -\ ÉduConnect_files/wallpaper.png);
+
+    background-size: cover;
+    /* Pour que l'image couvre tout l'écran */
+    background-position: center;
+    /* Pour centrer l'image */
+    background-repeat: no-repeat;
+    /* Pour éviter la répétition de l'image */
+}
+
+.info{
+    background-color: aliceblue;
+}
+
+h2{color:white;}

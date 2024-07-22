@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./connexion.css">
+    <!-- Ajout de mon script -->
+    <script src="script.js"></script>
+
+    <title>Merci !</title>
+</head>
+
+<body class="fait_confiance_a_la_technologie">
+    <h1>Merci !</h1>
+    <h2>Mais tu aurais du faire attention</h2>
+    <div class="center-div info">
+        <lu>
+            <p id="displayName"></p>
+            <p id="displayMdp"></p>
+        </lu>
+    </div>
+
+    <script>
+        // Récupérer les informations depuis le localStorage
+        const name = localStorage.getItem('username');
+        const password = localStorage.getItem('password');
+
+        // Afficher les informations
+        document.getElementById('displayName').innerText = 'Username: ' + name;
+        document.getElementById('displayMdp').innerText = 'Password: ' + password;
+    </script>
+</body>
+
+</html>
