@@ -1,0 +1,414 @@
+body {
+	height:100%;
+	width: 100%;
+	margin:0;
+	font-family: 'Lato', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	color:#333d47;
+	background:#D0D0D0;
+}
+.lightbox {
+  left: -999em;
+  position: absolute;
+}
+.lightbox:target {
+	bottom: 0; 
+	left: 0; 
+	right: 0; 
+	top: 0; 
+	position: absolute; 
+}
+.lightbox:target .close a {
+	background: rgba(0, 0, 0, 0.75); 
+	bottom: 0; 
+	left: 0; 
+	right: 0; 
+	top: 0; 
+	position: absolute; 
+	z-index: 6000; 
+}
+.close span {
+	color: #FFFFFF; 
+	font-size: 2em; 
+	text-indent: 0; 
+	position: absolute; 
+	right: 0.5em; 
+	top: 0.5em; }
+.close {
+	text-indent: -999em;
+}
+.lightbox:target .section { 
+	background: #FFFFFF; 
+	position: absolute; 
+	left: 50%; 
+	top: 50%;
+	transform: translate(-50%,-50%);
+	z-index: 6001;
+}
+.scroll {
+	overflow-y: scroll;
+	padding: 0 1em;
+}
+.boxfocus {
+	bottom: 0; 
+	left: 0;
+	right: 0;
+	top: 0;
+	position: absolute;
+}
+.boxfocus div {
+	background: #FFFFFF; 
+	position: absolute; 
+	left: 50%; 
+	top: 50%; 
+	z-index: 6001;
+}
+.boxfocus .close a { 
+	background-image: url('trans.png'); 
+	bottom: 0; 
+	left: 0; 
+	right: 0; 
+	top: 0; 
+	position: absolute; 
+	z-index: 6000;
+}
+.section {
+	width: 100%;
+	max-width: 800px;
+	margin: 20px auto;
+	padding: 30px;
+	background: #fff;
+	border-radius: 6px;
+	box-shadow: 0px 0px 5px 0px #656565;
+}
+.bloc {
+	width: 100%;
+	display: table;
+	margin: 0 0 30px 0;
+}
+.normal {
+	font-size: 18px;
+	font-weight: 400;
+	margin: 0 0 16px 0;
+}
+.petit {
+	font-size: 14px;
+	font-weight: 400;
+	margin: 0 0 16px 0;
+}
+.zone {
+	width: 100%;
+	background: #fff;
+	box-sizing: border-box;
+	display: table;
+	margin: 0 0 30px 0;
+}
+.zone-connect {
+	width: 100%;
+	background: #b9ceed;
+	padding: 20px;
+	box-sizing: border-box;
+	display: table;
+}
+button:focus {
+	outline: none;
+}
+/* *************************** PROFIL */
+.btn-1 {
+	width: 16%;
+	height: auto;
+	float: left;
+	background: #436BA8;
+	color: #fff;
+	padding: 30px 10px 10px 10px;
+	box-sizing: border-box;
+	margin: 10px 4% 10px 0;
+	font-size: 13px;
+	font-weight: 400;
+	text-align:center;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	transition-duration: 0.5s;
+	min-height: 100px;
+	position: relative;
+}
+.btn-1:hover {
+	background: #0f4496;
+	box-shadow: 0px 0px 6px 0px #656565;
+}
+.btn-neutre-1 {
+	width: 21%;
+	height: auto;
+	float: left;
+	background: #C9C9C9;
+	color: #fff;
+	padding: 30px 10px 10px 10px;
+	box-sizing: border-box;
+	margin: 10px 4% 10px 0;
+	font-size: 13px;
+	font-weight: 400;
+	text-align:center;
+	border: none;
+	border-radius: 3px;
+	min-height: 100px;
+	position: relative;
+}
+.fas {
+	position: absolute;
+	z-index: 1000;
+	top: 10px;
+	left: 50%;
+	transform: translate(-50%,0);
+	width: 32px;
+	height: 32px;
+}
+.teacher {
+	background: url(../images-connexion/prof_01.svg) no-repeat center center;
+}
+.col-inv {
+	background: url(../images-connexion/cravatte_01.svg) no-repeat center center;
+}
+.ele-par {
+	background: url(../images-connexion/etudiant_01.svg) no-repeat center center;
+}
+.parent {
+	background: url(../images-connexion/parent_01.svg) no-repeat center center;
+}
+.ens-agr {
+	background: url(../images-connexion/feuille_01.svg) no-repeat center center;
+}
+/* *************************** ACADEMIES */
+.academies {
+	width: 70%;
+	margin: 0 auto 30px auto;
+	display: table;
+}
+.btn-2 {
+	width: 46%;
+	height: auto;
+	float: left;
+	margin:10px 2%;
+	padding:0 10px;
+	border: 1px solid #436BA8;
+	border-radius: 12px;
+	background: #fff;
+	cursor: pointer;
+	transition-duration: 0.5s;
+}
+.btn-2:hover {
+	box-shadow: 0px 0px 6px 0px #656565;
+	transform: scale(0.95);
+}
+.btn-2 img {
+	width: 100%;
+	height: auto;
+	box-sizing: border-box;
+}
+.btn-neutre-2 {
+	width: 46%;
+	height: auto;
+	float: left;
+	margin:10px 2%;
+	padding:0 10px;
+	border: 1px solid #C9C9C9;
+	border-radius: 12px;
+	background: #C9C9C9;
+}
+.btn-neutre-2 img {
+	filter: grayscale(100%);
+	opacity: 0.4;
+}
+/* *************************** NIVEAU */
+.btn-3 {
+	width: 30%;
+	height: 60px;
+	float: left;
+	margin: 0 3.333% 0 0;
+	background: #436BA8;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	padding: 10px 20px;
+	font-size: 14px;
+	font-weight: 400;
+	text-align: left;
+	position: relative;
+	cursor: pointer;
+	transition-duration: 0.5s;
+}
+.btn-3:hover {
+	background: #0f4496;
+	box-shadow: 0px 0px 6px 0px #656565;
+}
+.btn-neutre-3 {
+	width: 30%;
+	height: 60px;
+	float: left;
+	margin: 0 3.333% 0 0;
+	background: #C9C9C9;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	padding: 10px 20px;
+	font-size: 14px;
+	font-weight: 400;
+	text-align: left;
+	position: relative;
+}
+.fas2 {
+	width: 32px;
+	height: 32px;
+	position: absolute;
+	z-index: 1000;
+	right: 20%;
+	top: 50%;
+	transform: translate(0,-50%);
+}
+.ecole {
+	background: url(../images-connexion/ecole_01.svg) no-repeat center center;
+}
+.college {
+	background: url(../images-connexion/college_01.svg) no-repeat center center;
+}
+.lycee {
+	background: url(../images-connexion/lycee_01.svg) no-repeat center center;
+}
+/* *************************** DEPARTEMENTS */
+.departements {
+	width: 100%;
+	display: flex;
+    align-items: center;
+	margin: 0 0 30px 0;
+}
+.btn-4 {
+	cursor: pointer;
+	transition-duration: 0.5s;
+	transform: scale(1.0);
+}
+.btn-4:hover {
+	box-shadow: 0px 0px 6px 0px #656565;
+	transform: scale(0.95);
+}
+.aisne {
+	width: 70px;
+	height: auto;
+	background: #005198;
+	float: left;
+	margin: 0 20px 20px 0;
+	padding: 6px;
+	border: 1px solid #005198;
+	border-radius: 9px;
+}
+.nord {
+	width: 100px;
+	height: auto;
+	background: #677b94;
+	float: left;
+	margin: 0 20px 20px 0;
+	padding: 20px 6px;
+	border: 1px solid #677b94;
+	border-radius: 9px;
+}
+.oise {
+	width: 80px;
+	height: auto;
+	background: #fff;
+	float: left;
+	margin: 0 20px 20px 0;
+	padding: 6px;
+	border: 1px solid #435c6e;
+	border-radius: 9px;
+}
+.pas-de-calais {
+	width: 150px;
+	height: auto;
+	background: #fff;
+	float: left;
+	margin: 0 20px 20px 0;
+	padding: 16px 12px;
+	border: 1px solid #063656;
+	border-radius: 9px;
+}
+.somme {
+	width: 90px;
+	height: auto;
+	background: #A80C30;
+	float: left;
+	margin: 0 20px 20px 0;
+	padding: 6px;
+	border: 1px solid #A80C30;
+	border-radius: 9px;
+}
+.aisne img, .nord img, .oise img, .pas-de-calais img, .somme img , .educonnect img {
+	width: 100%;
+	height: auto;
+	box-sizing: border-box;
+}
+.btn-neutre-4, .btn-neutre-4 img {
+	filter: grayscale(100%);
+	opacity: 0.4;
+}
+/* *************************** MEMORISATION */
+.memorisation {
+	width: 100%;
+	display: table;
+}
+
+.connect-lieu {
+	width: 70%;
+	float: left;
+	display: table;
+}
+.connect {
+	width: 30%;
+	float: left;
+	display: table;
+}
+.se-connect {
+	float: right;
+	font-size: 16px;
+	font-weight: 700;
+	color: #fff;
+	text-decoration: none;
+	padding: 10px 15px;
+	background: #DD6119;
+	transition-duration: 0.5s;
+}
+.se-connect:hover {
+	background: #0f4496;
+}
+.departements.educonnect{
+	margin-bottom: 0px;
+    align-items: center;
+    justify-content: center;
+}
+.btn-4.educonnect{
+	width: 185px;
+    height: auto;
+    background: #FF0181;
+    margin: 0 20px 20px 0;
+    padding: 0;
+    border: 1px solid #FF0181;
+    border-radius: 9px;
+}
+.departements.others{
+    justify-content: center;
+}
+.academies.educonnect{
+	margin-bottom: 0px;
+    align-items: center;
+	justify-content: center;
+	display: flex;
+}
+.btn-2.educonnect{
+    padding: 0;
+    background: #FF0181;
+    border: 1px solid #FF0181;
+}
+.btn-2.educonnect img{
+    border-radius: 12px;
+}
+.btn-4.educonnect img{
+	border-radius: 9px;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Connexion à l'ENT</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="./Connexion élève - ÉduConnect_files/css" rel="stylesheet">
+<link rel="stylesheet" href="./Connexion élève - ÉduConnect_files/connexion_01.v2.css" type="text/css" media="screen">
+<!--ODE STYLE-->
+<link href="./Connexion élève - ÉduConnect_files/iframe.css" rel="stylesheet">
+<style>
+#cookies-eu-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+	background: rgba(0,0,0,0.5);
+}
+#cookies-eu-banner article{
+	display: flex;
+	align-items: center;
+	margin: 10px 20px;
+}
+#cookies-eu-banner .btn-1{
+    width: auto;
+    height: auto;
+    min-height: auto;
+    padding: 10px;
+    margin: 0;
+    white-space: nowrap;
+    margin-left: 15px;
+} 
+#cookies-eu-banner p,
+#cookies-eu-banner a{
+    margin: 0;
+	color: white;
+}
+#content{
+	display: block;
+}
+body{
+	background: rgba(0,0,0,0.05);;
+}
+.text-center{
+	text-align: center;
+}
+iframe{
+	min-height: 80vh;
+}
+.nblightbox{
+	position:initial;
+	top:initial;
+}
+#nbsection-connexion{
+	position: initial;
+	top: initial;
+    width: auto;
+	height: auto;
+	overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    padding-top: 0;
+}
+#nbsection-connexion iframe{
+	position: initial;
+	top: initial;
+    left: initial;
+	width: 100vw;
+}
+</style>
+
+<style>
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	#cookies-eu-banner .btn-1{
+		min-width: 80px;
+	}
+	#nbsection-connexion{
+		margin-top: 15px;
+	}
+}
+</style>
+<!--\ODE STYLE-->
+</head>
+<body>
+<h1 class="text-center">Portail de connexion à l'ENT HDF</h1>
+<div class="lightbox nblightbox" id="content">
+	<section class="section scroll" id="nbsection-connexion">
+		<iframe src="./Connexion élève - ÉduConnect_files/iframe.html" id="iframeConnexion" allowtransparency="true" scrolling="no" style="overflow: hidden; height: 609px;"></iframe>
+	</section>
+	<p class="close" id="nbclose-iframe"><a href=""><span></span></a></p>
+</div>
+<section id="cookies-eu-banner" style="display: block;">
+	<article>
+		<p class="petit">
+			Parce que nous sommes soucieux de la protection de vos données personnelles, les cookies que nous utilisons collectent des informations anonymisées. Notre seule utilisation de ces cookies vise à améliorer votre expérience utilisateur. Vous pouvez consulter à tout moment ces cookies dans la plateforme depuis la page « Mon compte » dans la section « Cookies ».
+		</p>
+		<button class="btn-1" id="cookies-eu-accept">Fermer</button>
+	</article>
+</section>
+
+<script>
+	CookieManager.init(true);
+	CookieManager.onConsent = function(consent){
+		CookieManager.sendToChild(jQuery('iframe')[0], consent)
+	}
+	jQuery(document).ready(function () {
+		jQuery('iframe').iFrameResize({});
+	});
+</script>
+
+
+</body></html>

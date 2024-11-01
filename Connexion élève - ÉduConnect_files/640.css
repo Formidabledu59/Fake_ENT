@@ -1,0 +1,14 @@
+.section {
+		max-width: 550px;
+	}
+	.connect-lieu, .connect {
+		width: 100%;
+	}
+	.departements {
+		display: table;
+	}
+	.btn-4 {
+		margin: 10px auto;
+		float: none;
+		display: table;
+	}

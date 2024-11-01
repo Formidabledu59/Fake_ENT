@@ -1,0 +1,26 @@
+.section {
+		max-width: 420px;
+	}
+	.btn-1 {
+		width: 40%;
+		font-size: 12px;
+	}
+	.academies {
+		width: 100%;
+		margin: 0 auto;
+	}
+	.connect-lieu, .connect {
+		width: 100%;
+	}
+	.btn-3 {
+		width: 70%;
+		margin-bottom: 10px;
+	}
+	.departements {
+		display: table;
+	}
+	.btn-4 {
+		margin: 10px auto;
+		float: none;
+		display: table;
+	}

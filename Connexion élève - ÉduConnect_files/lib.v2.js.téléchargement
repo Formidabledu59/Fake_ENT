@@ -1,0 +1,325 @@
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+};
+function doScrollIntoView(jElement){
+  try{
+    jElement[0].scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+  }catch(e){}
+}
+var CookieManager = {
+    memory:{},
+    privacyOk: false,
+    onConsent:null,
+    onlyBanner: null,
+    init: function(onlyBanner){
+      CookieManager.onlyBanner = onlyBanner;
+        var ignoreBanner = getUrlParameter("ignorebanner") == "true";
+        //
+        if(ignoreBanner){
+            jQuery("#cookies-eu-banner").remove();
+        }
+        CookieManager.cookiebanner = new CookiesEuBanner(function (consent) {
+            //console.log("Has consent: ",consent)
+            //wait for cookiebanner to return and dom to load
+            jQuery(document).ready(function(){
+                CookieManager.processConsent(consent);
+            })
+        },true);
+        //
+
+        var ignoreConsent = getUrlParameter("ignoreconsent") == "true";
+        if (ignoreConsent){
+            CookieManager.cookiebanner.setConsent(true);
+        }
+
+
+        if(ignoreBanner){
+            CookieManager.consent = CookieManager.cookiebanner.hasConsent();
+            CookieManager.cleanIfNeeded();
+            CookieManager.openIfNeeded();
+            jQuery("#nbconnexioncontent").show();
+            CookieManager.listenParentWindow();
+        }
+    },
+    listenParentWindow: function(){
+            function handleMessageFromParent(e){
+              if(e && e.data && e.data.type=="consent"){
+                console.log("received from parent: ",e)
+                CookieManager.processConsent(e.data.value)
+              }
+            }
+            if ( window.addEventListener ) {
+                window.addEventListener('message', handleMessageFromParent, false);
+            } else if ( window.attachEvent ) { // ie8
+                window.attachEvent('onmessage', handleMessageFromParent);
+            }
+    },
+    sendToChild: function(iframe, consent){
+      var wn = iframe.contentWindow;
+      var message = {type:"consent", value:consent}
+      wn.postMessage((message), '*');
+    },
+    processConsent: function(consent){
+      CookieManager.consent = consent;
+      CookieManager.onConsent && CookieManager.onConsent(consent);
+      if(!CookieManager.onlyBanner){
+          CookieManager.cleanIfNeeded();
+          CookieManager.openIfNeeded();
+          jQuery("#nbconnexioncontent").show();
+      }
+    },
+    getCookie: function(name){
+          var cookieM = CookieManager.cookiebanner;
+          return cookieM.getCookie(name);
+    },
+    getCookieOrMemory: function(name){
+          var cookieM = CookieManager.cookiebanner;
+          return cookieM.getCookie(name) || CookieManager.memory[name];
+    },
+    deleteCookie: function(name){
+          var cookieM = CookieManager.cookiebanner;
+          return cookieM.deleteCookie(name);
+    },
+    openIfNeeded: function(){
+        if(CookieManager.consent){
+            var profil = CookieManager.getCookie("profil");
+            profil && FormController.openProfil(profil, false);
+            //
+            var acad = CookieManager.getCookie("acad");
+            acad && FormController.openAcad(acad, false);
+            //
+            var etab = CookieManager.getCookie("etab");
+            etab && FormController.openEtab(etab, false);
+            //
+            var lieu = CookieManager.getCookie("lieu");
+            lieu && FormController.openLieu(lieu, false);
+            //
+            var lycac = CookieManager.getCookie("lycac");
+            lycac && FormController.openLycac(lycac, false);
+            //
+            var private = CookieManager.getCookie("private");
+            CookieManager.privacyOk =  CookieManager.isPrivacyOk(private);
+            private && FormController.checkPrivate(private || "non", true);
+        }else{
+          FormController.checkPrivate("non", true);//default dont memorize
+        }
+    },
+    cleanIfNeeded: function(force){
+        if(!CookieManager.consent || force){
+            CookieManager.deleteCookie("profil")
+            CookieManager.deleteCookie("acad")
+            CookieManager.deleteCookie("etab")
+            CookieManager.deleteCookie("lieu")
+            CookieManager.deleteCookie("lycac")
+            CookieManager.deleteCookie("private")
+        }
+    },
+    saveValue: function(name,value){
+      CookieManager.memory[name] = value;
+        if(CookieManager.consent && CookieManager.privacyOk){
+            CookieManager.cookiebanner.setCookie(name,value)
+        }
+    },
+    isPrivacyOk: function(value){
+      if(value && value.indexOf("oui")>-1){
+        return true;
+      }
+      return false;
+    },
+    setPrivate: function(value){
+      CookieManager.memory["private"] = value;
+      if(CookieManager.consent){
+          CookieManager.privacyOk =  CookieManager.isPrivacyOk(value);
+          if(CookieManager.privacyOk){
+            for(var key in CookieManager.memory){
+              CookieManager.cookiebanner.setCookie(key,CookieManager.memory[key])
+            }
+          }else{
+            CookieManager.cleanIfNeeded(true)
+          }
+          CookieManager.cookiebanner.setCookie("private",value)
+      }
+    }
+}
+
+// hack for restore scroll don't work on chrome
+/*jQuery.fn.hasScrollBar = function() {
+ return this.get(0) && this.get(0).scrollHeight > this.height();
+ }
+
+ var interval = setInterval(function () {
+ console.log(jQuery('#nbconnexioncontent').hasScrollBar());
+ if (jQuery('#nbconnexioncontent').hasScrollBar()) {
+ clearInterval(interval);
+ setTimeout(function() { 
+ //CookieManager.openIfNeeded();   
+ }, 500);
+ }    
+ },
+ 100 // 0.1 second (wait time between checks)
+ );
+ */
+
+var ENT_URL = {
+  acad1: "../Connexion élève - ÉduConnect.html",//personnel educ nationnal => academie lille
+  acad2: "../Connexion élève - ÉduConnect.html", //personnel educ nationnal => academie amiens
+  choix2: "../Connexion élève - ÉduConnect.html",//personel collectivite et invité
+  etab1: "../Connexion élève - ÉduConnect.html",//eleve => ecole
+  lieu6: "../Connexion élève - ÉduConnect.html",//eleve => collège
+  lycac3: "../Connexion élève - ÉduConnect.html", //eleve => lycée
+  choix4: "../Connexion élève - ÉduConnect.html", //enseignement argicole
+  choix5: "../Connexion élève - ÉduConnect.html", //parent -> educonnect
+  lycac6: "../Connexion élève - ÉduConnect.html" //parent => école -> ent
+}
+var FormController = {
+  openProfil: function(profName, scroll) {
+    scroll = typeof scroll == "undefined"? true : scroll;
+    //btn
+    jQuery("[data-profil]").removeClass("selected");
+    jQuery('[data-profil="'+profName+'"]').addClass("selected");
+    //bloc
+    jQuery('.profil').hide();
+    jQuery('#'+profName).show();
+    if (scroll && jQuery('#'+profName)[0]) {
+      doScrollIntoView(jQuery('#'+profName));
+    }
+
+    //cookie
+    CookieManager.saveValue("profil", profName);
+    FormController.updateUrl();
+  },
+  openAcad: function(acadName, scroll) {
+    scroll = typeof scroll == "undefined"? true : scroll;
+    //btn
+    jQuery("[data-acad]").removeClass("selected");
+    jQuery('[data-acad="'+acadName+'"]').addClass("selected");
+    //bloc
+    jQuery('.acad').hide();
+    jQuery('#'+acadName).show();
+    if (scroll && jQuery('#'+acadName)[0]) {
+       doScrollIntoView(jQuery('#'+acadName));
+    }
+
+    //cookie
+    CookieManager.saveValue("acad", acadName);
+    FormController.updateUrl();
+  },
+  openEtab: function(etabName, scroll) {
+    scroll = typeof scroll == "undefined"? true : scroll;
+    //btn
+    jQuery("[data-etab]").removeClass("selected");
+    jQuery('[data-etab="'+etabName+'"]').addClass("selected");
+    //bloc
+    jQuery('.etab').hide();
+    jQuery('#'+etabName).show();
+    if (scroll && jQuery('#'+etabName)[0]) {
+      doScrollIntoView(jQuery('#'+etabName));
+    }
+
+    //cookie
+    CookieManager.saveValue("etab", etabName);
+    FormController.updateUrl();
+    if(etabName == "etab2"){
+      //open lieu6 => educonnect
+      FormController.openLieu("lieu6")
+    }else if(etabName =="etab3"){
+      //open lycac3 => educonnect
+      FormController.openLycac("lycac3")
+    }else if(etabName == "etab4"){
+      FormController.openLieu("lieu8")
+    }
+  },
+  openLieu: function(lieuName, scroll) {
+    scroll = typeof scroll == "undefined"? true : scroll;
+    //btn
+    jQuery("[data-lieu]").removeClass("selected");
+    jQuery('[data-lieu="'+lieuName+'"]').addClass("selected");
+    //bloc
+    jQuery('.lieu').hide();
+    jQuery('#'+lieuName).show();
+    if (scroll && jQuery('#'+lieuName)[0]) {
+      doScrollIntoView(jQuery('#'+lieuName));
+    }
+    //cookie
+    CookieManager.saveValue("lieu", lieuName);
+    FormController.updateUrl();
+  },
+  openLycac: function(lycacName, scroll) {
+    scroll = typeof scroll == "undefined"? true : scroll;
+    //btn
+    jQuery("[data-lycac]").removeClass("selected");
+    jQuery('[data-lycac="'+lycacName+'"]').addClass("selected");
+    //bloc
+    jQuery('.lycac').hide();
+    jQuery('#'+lycacName).show();
+    if (scroll && jQuery('#'+lycacName)[0]) {
+      doScrollIntoView(jQuery('#'+lycacName));
+    }
+    //cookie
+    CookieManager.saveValue("lycac", lycacName);
+    FormController.updateUrl();
+  },
+  checkPrivate: function(name, value){
+    jQuery("[data-private]").prop("checked", false)
+    if(value){
+      jQuery('[data-private="'+name+'"]').prop("checked", true)
+      CookieManager.setPrivate(name);
+    }else{
+      CookieManager.setPrivate("");
+    }
+    FormController.updateUrl();
+  },
+  updateUrl:function(){
+    jQuery('[data-connecturl]').addClass("nbdisabled").attr("href","javascript:void(0)")
+    jQuery('[data-connecturl]').each(function(k,value){
+      var key = jQuery(value).attr('data-connecturl');
+      var condition = jQuery(value).attr('data-connectif');
+      var val = CookieManager.getCookieOrMemory(condition);
+      if(val==key){
+        jQuery(value).removeClass("nbdisabled").attr("href",ENT_URL[key])
+      }
+    })
+  },
+  bindEvents: function(){
+    //bind profil
+    function bindClick(attribute, callback){
+      jQuery('['+attribute+']').each(function(key,value){
+        var name = jQuery(value).attr(attribute);
+        jQuery(value).on("click", function(){
+          console.log("click:", value, name)
+          callback(name);
+        })
+      })
+    }
+    //bind clicks
+    bindClick('data-profil', function(name){
+      //reset on top level
+      FormController.openAcad("-1")
+      FormController.openEtab("-1")
+      FormController.openLieu("-1")
+      FormController.openLycac("-1")
+      //
+      FormController.openProfil(name);
+    })
+    bindClick('data-acad', FormController.openAcad)
+    bindClick('data-etab', FormController.openEtab)
+    bindClick('data-lieu', FormController.openLieu)
+    bindClick('data-lycac', FormController.openLycac)
+    //bind check
+    jQuery('[data-private]').each(function(key,value){
+      var name = jQuery(value).attr('data-private');
+      jQuery(value).on("change", function(){
+        var checked = jQuery(value).is(":checked")
+        FormController.checkPrivate(name,checked)
+      })
+    })
+    //update url
+    FormController.updateUrl();
+  }
+}
+jQuery(document).ready(function(){
+  FormController.bindEvents();
+})

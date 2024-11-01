@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0087)https://connexion.enthdf.fr/iframe.html?ignorebanner=true&theme=inline&version=23022023 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Connexion</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="./css" rel="stylesheet">
+<link rel="stylesheet" href="./connexion_01.v2.css" type="text/css" media="screen">
+<link rel="stylesheet" href="./640.css" type="text/css" media="screen and (min-width : 640px) and (max-width : 767px)">
+<link rel="stylesheet" href="./480.css" type="text/css" media="screen and (min-width : 480px) and (max-width : 639px)">
+<link rel="stylesheet" href="./320.css" type="text/css" media="screen and (max-width : 479px)">
+<!--ODE STYLE-->
+<style>
+	html{
+		overflow: hidden;
+	}
+	body{
+		background: transparent;
+	}
+	body > section.section{
+		position: absolute;
+		left: 50%;
+		top:50%;
+		transform: translate(-50%,-50%);
+		overflow: auto;
+		max-height: 80vh;
+		overflow: auto !important;
+		padding: 12px;
+		box-sizing: border-box;
+	}
+	#cookies-eu-banner .btn-1{
+		min-height: auto;
+    	padding: 10px;
+		float: right;
+	}
+	article.logos{
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	article.logos img{
+		width: auto;
+		height: 55px;
+		margin: 15px;
+	}
+	.btn-1.selected{
+		background: #0f4496;
+		box-shadow: 0px 0px 6px 0px #656565;
+	}
+	.btn-2.selected{
+		box-shadow: 0px 0px 6px 0px #656565;
+		transform: scale(0.95);
+	}
+	.btn-3.selected {
+		background: #0f4496;
+		box-shadow: 0px 0px 6px 0px #656565;
+	}
+	.btn-4.selected {
+		box-shadow: 0px 0px 6px 0px #656565;
+	}
+	body.nbinline > section.section{
+		position: initial;
+		max-height: none;
+		transform: none;
+		left: initial;
+		top: initial;
+    	margin-bottom: 30px;
+	}
+	.nblogos-title{
+		width: 100%;
+    	text-align: center;
+	}
+	a.nbdisabled{
+		background: rgba(0,0,0,0.4);
+		color: white;
+		pointer-events: none;
+		cursor: default;
+	}
+</style>
+<style type="text/css">
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	.nbinline{
+		display: flex;
+	}
+	#nbconnexioncontent{
+		position: static;
+		transform: translate(0px,0px);
+		top: 0px;
+		left:0px;
+		width 100vw;
+		height: 100vh;
+	}
+	html{
+		overflow-y: scroll;
+		height: 100vh;
+	}
+}
+</style>
+<!--/ODE STYLE-->
+</head>
+<body class="nbinline">
+	
+	<section class="section scroll" style="" id="nbconnexioncontent">
+		<article class="bloc choix_profil">
+			<p class="normal">Veuillez renseigner quelques informations pour accéder à votre page d'authentification</p>
+			<p class="petit">1. Sélectionner votre profil</p>
+			<button class="btn-1" data-profil="choix3"><i class="fas ele-par"></i>Élève</button>
+			<button class="btn-1" data-profil="choix5"><i class="fas parent"></i>Représentant légal</button>
+			<button class="btn-1" data-profil="choix1"><i class="fas teacher"></i>Personnel Education Nationale</button>
+			<button class="btn-1" data-profil="choix4"><i class="fas ens-agr"></i>Enseignement agricole</button>
+			<button class="btn-1" data-profil="choix2"><i class="fas col-inv"></i>Personnel collectivité et invité</button>
+		</article>
+
+
+
+	
+		<article class="bloc memorisation profil" id="choix5" style="display:none">
+			<div class="zone-connect">
+				<div class="connect-lieu">
+					<p class="normal">Représentant légal</p>
+					<p class="petit">Mémoriser ce choix</p>
+					<p><input type="checkbox" id="choix5_non" data-private="non"><label for="test1">Non</label> (je me connecte depuis un lieu public)</p>
+					<p><input type="checkbox" id="choix5_oui" data-private="oui"><label for="test2">Oui</label> (je me connecte depuis mon ordinateur)</p>
+				</div>
+				<div class="connect">
+					<a class="se-connect nbdisabled" href="" data-connectif="profil" data-connecturl="choix5" target="_parent">Se connecter</a>
+				</div>
+			</div>
+		</article>
+		
+		<article class="bloc choix-academie profil" id="choix1" style="display:none">
+			<p class="petit">2. Sélectionner votre académie</p>
+			<div class="academies">
+				<button class="btn-2" data-acad="acad1"><img src="./ac-lille_01.svg"></button>
+				<button class="btn-2" data-acad="acad2"><img src="./ac-amiens_01.svg"></button>
+			</div>
+				
+			<article class="bloc memorisation acad" id="acad1" style="display:none">
+				<div class="zone-connect">
+					<div class="connect-lieu">
+						<p class="normal">Académie de Lille</p>
+						<p class="petit">Mémoriser ce choix</p>
+						<p><input type="checkbox" id="acad1_non" data-private="non"><label for="test1">Non</label> (je me connecte depuis un lieu public)</p>
+						<p><input type="checkbox" id="acad1_oui" data-private="oui"><label for="test2">Oui</label> (je me connecte depuis mon ordinateur)</p>
+					</div>
+					<div class="connect">
+						<a class="se-connect nbdisabled" href="" data-connectif="acad" data-connecturl="acad1" target="_parent">Se connecter</a>
+					</div>
+				</div>
+			</article>
+			<article class="bloc memorisation acad" id="acad2" style="display:none">
+				<div class="zone-connect">
+					<div class="connect-lieu">
+						<p class="normal">Académie d'Amiens</p>
+						<p class="petit">Mémoriser ce choix</p>
+						<p><input type="checkbox" id="acad2_non" data-private="non"><label for="test1">Non</label> (je me connecte depuis un lieu public)</p>
+						<p><input type="checkbox" id="acad2_oui" data-private="oui"><label for="test2">Oui</label> (je me connecte depuis mon ordinateur)</p>
+					</div>
+					<div class="connect">
+						<a class="se-connect nbdisabled" href="" data-connectif="acad" data-connecturl="acad2" target="_parent">Se connecter</a>
+					</div>
+				</div>
+			</article>
+		</article>
+	
+		<article class="bloc memorisation profil" id="choix2" style="display:none">
+			<div class="zone-connect">
+				<div class="connect-lieu">
+					<p class="normal">Personnel collectivité et invités</p>
+					<p class="petit">Mémoriser ce choix</p>
+					<p><input type="checkbox" id="choix2_non" data-private="non"><label for="test1">Non</label> (je me connecte depuis un lieu public)</p>
+					<p><input type="checkbox" id="choix2_oui" data-private="oui"><label for="test2">Oui</label> (je me connecte depuis mon ordinateur)</p>
+				</div>
+				<div class="connect">
+					<a class="se-connect nbdisabled" href="" data-connectif="profil" data-connecturl="choix2" target="_parent">Se connecter</a>
+				</div>
+			</div>
+		</article>
+	
+		<article class="bloc choix-niveau profil" id="choix3" style="display:none">
+			<p class="petit">2. Sélectionner votre niveau</p>
+			<div class="zone">
+				<button class="btn-3" data-etab="etab1"><i class="fas2 ecole"></i>Ecole</button>
+				<button class="btn-3" data-etab="etab2"><i class="fas2 college"></i>Collège ou lycée</button>
+			</div>
+			
+			<article class="bloc memorisation etab" id="etab1" style="display:none">
+				<div class="zone-connect">
+					<div class="connect-lieu">
+						<p class="normal">Ecole</p>
+						<p class="petit">Mémoriser ce choix</p>
+						<p><input type="checkbox" id="choix3_non" data-private="non"><label for="test1">Non</label> (je me connecte depuis un lieu public)</p>
+						<p><input type="checkbox" id="choix3_oui" data-private="oui"><label for="test2">Oui</label> (je me connecte depuis mon ordinateur)</p>
+					</div>
+					<div class="connect">
+						<a class="se-connect nbdisabled" href="" data-connectif="etab" data-connecturl="etab1" target="_parent">Se connecter</a>
+					</div>
+				</div>
+			</article>
+			
+			<article class="bloc choix-departement etab" id="etab2" style="display:none">
+				<article class="bloc memorisation lieu" id="lieu6" style="display:block">
+					<div class="zone-connect">
+						<div class="connect-lieu">
+							<p class="normal">Collège ou lycée</p>
+							<p class="petit">Mémoriser ce choix</p>
+							<p><input type="checkbox" id="lieu6_non" data-private="non"><label for="test1">Non</label> (je me connecte depuis un lieu public)</p>
+							<p><input type="checkbox" id="lieu6_oui" data-private="oui"><label for="test2">Oui</label> (je me connecte depuis mon ordinateur)</p>
+						</div>
+						<div class="connect">
+							<a class="se-connect nbdisabled" href="" data-connectif="lieu" data-connecturl="lieu6" target="_parent">Se connecter</a>
+						</div>
+					</div>
+				</article>
+			</article>
+		</article>
+	
+		<article class="bloc memorisation profil" id="choix4" style="display:none">
+			<div class="zone-connect">
+				<div class="connect-lieu">
+					<p class="normal">Enseignement agricole</p>
+					<p class="petit">Mémoriser ce choix</p>
+					<p><input type="checkbox" id="choix4_non" data-private="non"><label for="test1">Non</label> (je me connecte depuis un lieu public)</p>
+					<p><input type="checkbox" id="choix4_oui" data-private="oui"><label for="test2">Oui</label> (je me connecte depuis mon ordinateur)</p>
+				</div>
+				<div class="connect">
+					<a class="se-connect nbdisabled" href="" data-connectif="profil" data-connecturl="choix4" target="_parent">Se connecter</a>
+				</div>
+			</div>
+		</article>
+		<hr>
+		<article class="bloc logos">
+			<h2 class="nblogos-title">Partenaires du projet</h2>
+			<img src="./logo-hdf.png">
+			<img src="./logo-aisne.png">
+			<img src="./logo-nord.jpg">
+			<img src="./logo-oise.jpg">
+			<img src="./logo-pasdecalais.jpg">
+			<img src="./logo-somme.png">
+			<img src="./logo-adica.png">
+			<img src="./logo-oisehd.jpg">
+			<img src="./logo-fibrenum.png">
+			<img src="./logo-somme-numerique.png">
+			<img src="./logo-argicole.png">
+			<img src="./logo_RA_HAUTS-DE-FRANCE.png">
+			<img src="./logo-ue.jpg">
+		</article>
+	</section>
+<script type="text/javascript">
+<!--
+ 	/*@cc_on @if (@_jscript_version > 5.6)
+ 	function bootup(){
+ 	var tds = document.getElementsByTagName("a"); lightbox();
+ 	for( var x=0; x < tds.length; x++ ){tds[x].onclick = function(){setTimeout(lightbox, 1);};}
+ 	}
+ 	function lightbox(){
+ 	var counted = document.getElementsByTagName("div");
+ 	for( var x=0; x < counted.length; x++ ){ if ( counted[x].className == "boxfocus" ) { counted[x].className = "lightbox"; } }
+ 	if (location.hash.substr(1) == "") {} else { document.getElementById(location.hash.substr(1)).className = "boxfocus"; }
+ 	}
+ 	window.onload=bootup;
+ 	@end @*/
+ 	// -->
+</script>
+<script src="./jquery.min.js.téléchargement"></script>
+<script src="./iframeResizer.contentWindow.min.js.téléchargement"></script>
+<script src="./cookies.v2.js.téléchargement"></script>
+<script src="./lib.v2.js.téléchargement"></script>
+<script>
+	CookieManager.init();
+	function getQueryVariable(variable)
+	{
+		var query = window.location.search.substring(1);
+		var vars = query.split("&");
+		for (var i=0;i<vars.length;i++) {
+				var pair = vars[i].split("=");
+				if(pair[0] == variable){return pair[1];}
+		}
+		return(false);
+	}
+	if(getQueryVariable("theme")=="inline"){
+		jQuery(document).ready(function(){
+			jQuery("body").addClass("nbinline")
+		})
+	}
+</script>
+
+
+<div style="clear: both; display: block; height: 0px;"></div></body></html>

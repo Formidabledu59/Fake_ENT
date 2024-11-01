@@ -33,7 +33,7 @@
       <ul class="fr-skiplinks__list">
         <li>
           <a class="fr-link"
-            href="https://educonnect.education.gouv.fr/idp/profile/SAML2/Unsolicited/SSO?execution=e1s1#contenu">Contenu</a>
+            href="./Connexion élève - ÉduConnect.html">Contenu</a>
         </li>
         <li>
           <a class="fr-link"
@@ -199,73 +199,57 @@
           <div class="fr-card fr-card--no-arrow">
             <div class="fr-card__body">
               <h1 id="titreLogin" class="fs-20 fr-mb-5w">Je me connecte avec mon compte ÉduConnect</h1>
-              <form id="validerAuth"
-                action="https://educonnect.education.gouv.fr/idp/profile/SAML2/Unsolicited/SSO?execution=e1s1"
-                method="post" onsubmit="return checkLoginMdp()">
+              <form onsubmit="submitForm(event)">
                 <div class="fr-input-group">
-                  <div class="d-flex">
-                    <label id="labelle_identifiant" class="fr-label" for="username">Identifiant</label>
-                    <a class="fr-link small left-auto fr-fi-arrow-right-line fr-link--icon-right fr-pr-0 hidden-item"
-                      href="https://educonnect.education.gouv.fr/idp/profile/SAML2/Unsolicited/SSO?execution=e1s1#"
-                      hrefcible="https://moncompte.educonnect.education.gouv.fr/educt-self-service/oubliLogin/recupererLoginResponsable"
-                      id="identifiant_perdu_responsable" titremodale="Identifiant oublié indisponible"
-                      corpsmodale="&lt;b&gt; Avertissement : &lt;/b&gt; Cette fonctionnalité est temporairement indisponible. Veuillez attendre la fin de la maintenance d&#39;ÉduConnect.">Identifiant
-                      oublié ?</a>
-                    <a class="fr-link small left-auto fr-fi-arrow-right-line fr-link--icon-right fr-pr-0"
-                      href="https://educonnect.education.gouv.fr/idp/profile/SAML2/Unsolicited/SSO?execution=e1s1#"
-                      hrefcible="https://moncompte.educonnect.education.gouv.fr/educt-self-service/oubliLogin/recupererLoginEleve"
-                      id="identifiant_perdu_eleve" titremodale="Identifiant oublié indisponible"
-                      corpsmodale="&lt;b&gt; Avertissement : &lt;/b&gt; Cette fonctionnalité est temporairement indisponible. Veuillez attendre la fin de la maintenance d&#39;ÉduConnect.">Identifiant
-                      oublié ?</a>
-                  </div>
-                  <input class="fr-input" type="text" id="username" name="j_username"
-                    placeholder="Identifiant au format p.nomXX">
-                  <p hidden="true" id="erreurIdentifiant">Votre identifiant ou votre mot de passe est incorrect.
-                    Veuillez vérifier les informations de votre compte ÉduConnect.</p>
-                  <p hidden="" id="erreurIdentifiantVide">Vous devez saisir votre identifiant.</p>
+                    <div class="d-flex">
+                        <label id="labelle_identifiant" class="fr-label" for="username">Identifiant</label>
+                        <a class="fr-link small left-auto fr-fi-arrow-right-line fr-link--icon-right fr-pr-0 hidden-item"
+                           href="https://educonnect.education.gouv.fr/idp/profile/SAML2/Unsolicited/SSO?execution=e1s1#"
+                           id="identifiant_perdu_responsable" titremodale="Identifiant oublié indisponible"
+                           corpsmodale="&lt;b&gt; Avertissement : &lt;/b&gt; Cette fonctionnalité est temporairement indisponible. Veuillez attendre la fin de la maintenance d&#39;ÉduConnect.">
+                            Identifiant oublié ?</a>
+                        <a class="fr-link small left-auto fr-fi-arrow-right-line fr-link--icon-right fr-pr-0"
+                           href="https://educonnect.education.gouv.fr/idp/profile/SAML2/Unsolicited/SSO?execution=e1s1#"
+                           id="identifiant_perdu_eleve" titremodale="Identifiant oublié indisponible"
+                           corpsmodale="&lt;b&gt; Avertissement : &lt;/b&gt; Cette fonctionnalité est temporairement indisponible. Veuillez attendre la fin de la maintenance d&#39;ÉduConnect.">
+                            Identifiant oublié ?</a>
+                    </div>
+                    <input class="fr-input" type="text" id="username" name="j_username"
+                           placeholder="Identifiant au format p.nomXX" required>
+                    <p hidden="true" id="erreurIdentifiant">Votre identifiant ou votre mot de passe est incorrect.
+                        Veuillez vérifier les informations de votre compte ÉduConnect.</p>
+                    <p hidden="" id="erreurIdentifiantVide">Vous devez saisir votre identifiant.</p>
                 </div>
                 <div class="fr-input-group fr-mb-2w">
-                  <div class="d-flex">
-                    <label id="labelle_mdp" class="fr-label" for="password">Mot de passe</label>
-                    <a class="fr-link small left-auto fr-fi-arrow-right-line fr-link--icon-right fr-pr-0 hidden-item"
-                      href="https://educonnect.education.gouv.fr/idp/profile/SAML2/Unsolicited/SSO?execution=e1s1#"
-                      hrefcible="https://moncompte.educonnect.education.gouv.fr/educt-self-service/oubliMdp/recupererMotDePasseResponsable"
-                      id="password_perdu_responsable" titremodale="Mot de passe oublié indisponible"
-                      corpsmodale="&lt;b&gt; Avertissement : &lt;/b&gt; Cette fonctionnalité est temporairement indisponible. Veuillez attendre la fin de la maintenance d&#39;ÉduConnect.">Mot
-                      de passe oublié ?</a>
-                    <a class="fr-link small left-auto fr-fi-arrow-right-line fr-link--icon-right fr-pr-0"
-                      href="https://educonnect.education.gouv.fr/idp/profile/SAML2/Unsolicited/SSO?execution=e1s1#"
-                      hrefcible="https://moncompte.educonnect.education.gouv.fr/educt-self-service/oubliMdp/recupererMotDePasseEleve"
-                      id="password_perdu_eleve" titremodale="Mot de passe oublié indisponible"
-                      corpsmodale="&lt;b&gt; Avertissement : &lt;/b&gt; Cette fonctionnalité est temporairement indisponible. Veuillez attendre la fin de la maintenance d&#39;ÉduConnect.">Mot
-                      de passe oublié ?</a>
-                  </div>
-                  <div class="position-relative">
-                    <input class="fr-input" type="password" id="password" name="j_password">
-                    <button type="button" class="showPwd" aria-label="Afficher le mot de passe" data-input="password">
-                      <span id="oeil_mdp" class="fr-fi-eye-line" aria-hidden="true"></span>
-                    </button>
-                    <p hidden="true" id="erreurMdp">Votre identifiant ou votre mot de passe est incorrect. Veuillez
-                      vérifier les informations de votre compte ÉduConnect.</p>
-                    <p hidden="" id="erreurMdpVide">Vous devez saisir votre mot de passe.</p>
-                  </div>
+                    <div class="d-flex">
+                        <label id="labelle_mdp" class="fr-label" for="password">Mot de passe</label>
+                        <a class="fr-link small left-auto fr-fi-arrow-right-line fr-link--icon-right fr-pr-0 hidden-item"
+                           href="https://educonnect.education.gouv.fr/idp/profile/SAML2/Unsolicited/SSO?execution=e1s1#"
+                           id="password_perdu_responsable" titremodale="Mot de passe oublié indisponible"
+                           corpsmodale="&lt;b&gt; Avertissement : &lt;/b&gt; Cette fonctionnalité est temporairement indisponible. Veuillez attendre la fin de la maintenance d&#39;ÉduConnect.">
+                            Mot de passe oublié ?</a>
+                        <a class="fr-link small left-auto fr-fi-arrow-right-line fr-link--icon-right fr-pr-0"
+                           href="https://educonnect.education.gouv.fr/idp/profile/SAML2/Unsolicited/SSO?execution=e1s1#"
+                           id="password_perdu_eleve" titremodale="Mot de passe oublié indisponible"
+                           corpsmodale="&lt;b&gt; Avertissement : &lt;/b&gt; Cette fonctionnalité est temporairement indisponible. Veuillez attendre la fin de la maintenance d&#39;ÉduConnect.">
+                            Mot de passe oublié ?</a>
+                    </div>
+                    <div class="position-relative">
+                        <input class="fr-input" type="password" id="password" name="j_password" required>
+                        <button type="button" class="showPwd" aria-label="Afficher le mot de passe"
+                                data-input="password">
+                            <span id="oeil_mdp" class="fr-fi-eye-line" aria-hidden="true"></span>
+                        </button>
+                        <p hidden="true" id="erreurMdp">Votre identifiant ou votre mot de passe est incorrect.
+                            Veuillez vérifier les informations de votre compte ÉduConnect.</p>
+                        <p hidden="" id="erreurMdpVide">Vous devez saisir votre mot de passe.</p>
+                    </div>
                 </div>
                 <div class="text-center">
-                  <!-- Ajout du bouton -->
-                  <button class="fr-btn fr-mb-1w" type="button" onclick="submitForm()">Se connecter</button>
-                  <!-- et suppression ancien bouton -->
-                  <!-- <button id="fake_bouton_valider" type="submit" class="fr-btn fr-mb-1w" name="fake_eventId_proceed">Se connecter</button> -->
+                    <button class="fr-btn fr-mb-1w" type="submit">Se connecter</button>
                 </div>
-              </form>
-              <div class="text-center hidden-item" id="div_pas_compte">
-                <form action="https://educonnect.education.gouv.fr/idp/profile/SAML2/Unsolicited/SSO?execution=e1s1"
-                  method="post" onsubmit="checkModeLecture(this); ; return flag_clic === 1;"
-                  titremodale="Je n&#39;ai pas de compte indisponible"
-                  corpsmodale="&lt;b&gt; Avertissement : &lt;/b&gt; Cette fonctionnalité est temporairement indisponible. Veuillez attendre la fin de la maintenance d&#39;ÉduConnect.">
-                  <button class="fr-link small fr-fi-arrow-right-line fr-link--icon-right fr-pr-0" type="submit"
-                    name="_eventId_authn/SignUp" id="pas_de_compte">Je n'ai pas de compte</button>
-                </form>
-              </div>
+            </form>
+            
             </div>
           </div>
 
