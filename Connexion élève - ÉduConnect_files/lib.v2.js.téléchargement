@@ -163,6 +163,9 @@ var CookieManager = {
  );
  */
 
+// Modification lien de redirection
+//../Connexion élève - ÉduConnect.html
+// Les deux points '..' permettent de remonter d'un niveau dans l'arborescence pour accéder aux pages situées dans un répertoire parent
 var ENT_URL = {
   acad1: "../Connexion élève - ÉduConnect.html",//personnel educ nationnal => academie lille
   acad2: "../Connexion élève - ÉduConnect.html", //personnel educ nationnal => academie amiens

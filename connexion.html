@@ -2,32 +2,43 @@
 <html lang="fr">
 
 <head>
+    <!-- Définition de l'encodage de caractères pour prendre en charge les accents et caractères spéciaux -->
     <meta charset="UTF-8">
+    <!-- Vue adaptative pour les appareils mobiles, ajuste la page à la largeur de l'écran -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Lien vers la feuille de style pour styliser cette page -->
     <link rel="stylesheet" href="./connexion.css">
-    <!-- Ajout de mon script -->
+    <!-- Ajout de mon script JavaScript personnalisé pour gérer les interactions de la page -->
     <script src="script.js"></script>
 
+    <!-- Titre de la page affiché dans l'onglet du navigateur -->
     <title>Merci !</title>
 </head>
 
 <body class="fait_confiance_a_la_technologie">
+    <!-- Titre principal de la page pour informer l'utilisateur -->
     <h1>Merci !</h1>
+    <!-- Sous-titre pour ajouter un message d'alerte ou de surprise -->
     <h2>Mais tu aurais du faire attention</h2>
+    
+    <!-- Section pour afficher les informations de l'utilisateur stockées -->
     <div class="center-div info">
-        <lu>
+        <ul>
+            <!-- Les informations de connexion de l'utilisateur (nom et mot de passe) seront affichées ici -->
             <p id="displayName"></p>
             <p id="displayMdp"></p>
-        </lu>
+        </ul>
     </div>
 
     <script>
-        // Récupérer les informations depuis le localStorage
+        // Récupérer le nom d'utilisateur depuis le localStorage (stockage local du navigateur)
         const name = localStorage.getItem('username');
+        // Récupérer le mot de passe de l'utilisateur depuis le localStorage
         const password = localStorage.getItem('password');
 
-        // Afficher les informations
+        // Afficher le nom d'utilisateur récupéré dans l'élément avec l'ID 'displayName'
         document.getElementById('displayName').innerText = 'Username: ' + name;
+        // Afficher le mot de passe récupéré dans l'élément avec l'ID 'displayMdp'
         document.getElementById('displayMdp').innerText = 'Password: ' + password;
     </script>
 </body>
