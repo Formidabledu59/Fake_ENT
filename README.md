@@ -51,6 +51,6 @@ __Pour voir les modifications ```Ctrl``` + ```F``` dans le ficher__
 - **Création de fichiers supplémentaires** : Ajout de fichiers JavaScript et d'une page de connexion interactive.
 ---
 
-**Lien vers les tests** : [Cliquez ici pour les ateliers](#)
+**Lien vers les tests** : [Cliquez ici pour les ateliers](https://github.com/Formidabledu59/Fake_ENT/tree/main/test)
 
 ---
