@@ -97,6 +97,11 @@ iframe{
 		<button class="btn-1" id="cookies-eu-accept">Fermer</button>
 	</article>
 </section>
+<script>
+    document.getElementById("cookies-eu-accept").addEventListener("click", function() {
+        document.getElementById("cookies-eu-banner").style.display = "none";
+    });
+</script>
 
 <script>
 	CookieManager.init(true);
